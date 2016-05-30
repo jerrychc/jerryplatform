@@ -1,0 +1,57 @@
+#login {
+	width:32%;
+	margin-left: auto;    
+	margin-right: auto;
+	border:1px solid #ccc;
+	position:relative;
+	overflow: hidden !important;    
+	text-align: left;
+	padding-top: 10%;
+}
+#login h2 {
+	height:40px;
+	line-height:40px;
+	text-align:center;
+	font-size:14px;
+	letter-spacing:1px;
+	color:#666;
+	background:url(../img/login_header.png) repeat-x;
+	border-bottom:1px solid #ccc;
+	margin:0 0 20px 0;
+}
+
+#login h2 img {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+#login div.user, #login div.pass {
+	font-size:14px;
+	color:#666;
+	padding:5px 0;
+	text-align:center;
+}
+#login input.text {
+	width:200px;
+	height:25px;
+	border:1px solid #ccc;
+	background:#fff;
+	font-size:14px;
+}
+#login .button {
+	text-align:center;
+	padding:20px 0;
+}
+#login input.submit {
+	width:107px;
+	height:30px;
+	background:url(../img/login_button.png) no-repeat;
+	border:none;
+	cursor:pointer;
+}
+
+#login .other {
+	text-align:right;
+	padding:15px 10px;
+	color:#666;
+}
