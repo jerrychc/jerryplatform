@@ -136,6 +136,7 @@ create table user
    userId               int not null auto_increment,
    userName             VARCHAR(50),
    userPassword         VARCHAR(40) not null,
+   credentialsSalt      VARCHAR(100) DEFAULT NULL,
    userNickname         VARCHAR(40) not null,
    userRealname         VARCHAR(20),
    userAge              int,
