@@ -8,7 +8,7 @@ import com.springmvc.util.FormMap;
 /**
  * 实体表
  */
-@TableSeg(tableName = "ly_userlogin", id="id")
+@TableSeg(tableName = "userlogin", id="id")
 public class UserLoginFormMap extends FormMap<String,Object>{
 
 	/**

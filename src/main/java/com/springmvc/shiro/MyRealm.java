@@ -92,17 +92,15 @@ public class MyRealm extends AuthorizingRealm{
 			// 当用户执行登录时,在方法处理上要实现user.login(token);
 			// 然后会自动进入这个类进行认证
 			// 交给AuthenticatingRealm使用CredentialsMatcher进行密码匹配，如果觉得人家的不好可以自定义实现
-			/*RandomNumberGenerator randomNumberGenerator = new SecureRandomNumberGenerator();
-			String salt=randomNumberGenerator.nextBytes().toHex();*/
 			SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(username, // 用户名
-					userFormMaps.get(0).get("password"), // 密码
+					userFormMaps.get(0).get("userPassword"), // 密码
 					ByteSource.Util.bytes(username + "" + userFormMaps.get(0).get("credentialsSalt")),// salt=username+salt
 					getName() // realm name
 			);
 			// 当验证都通过后，把用户信息放在session里
 			Session session = SecurityUtils.getSubject().getSession();
 			session.setAttribute("userSession", userFormMaps.get(0));
-			session.setAttribute("userSessionId", userFormMaps.get(0).get("id"));
+			session.setAttribute("userSessionId", userFormMaps.get(0).get("userId"));
 			return authenticationInfo;
 		} else {
 			throw new UnknownAccountException();// 没找到帐号

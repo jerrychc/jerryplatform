@@ -1,5 +1,7 @@
 package com.springmvc.controller;
 
+import java.util.Date;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
@@ -70,6 +72,7 @@ public class BackgroundController {
 			}
 			UserLoginFormMap userLogin = new UserLoginFormMap();
 			Session session = SecurityUtils.getSubject().getSession();
+			System.out.println("------usersessionid----"+session.getAttribute("userSessionId"));
 			userLogin.put("userId", session.getAttribute("userSessionId"));
 			userLogin.put("userName", username);
 			userLogin.put("loginIP", session.getHost());
