@@ -6,8 +6,9 @@
 	position:relative;
 	overflow: hidden !important;    
 	text-align: left;
-	padding-top: 10%;
+	margin-top: 10%;
 }
+
 #login h2 {
 	height:40px;
 	line-height:40px;

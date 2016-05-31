@@ -9,7 +9,8 @@
 <title>登录</title>
 </head>
 <body>
-	<form id="loginform" name="loginform" class="form-vertical"
+	<div id="loginbox" style="padding-top: 10%;">
+		<form id="loginform" name="loginform" class="form-vertical"
 			action="${pageContext.servletContext.contextPath }/login.shtml"
 			method="post">
 			
@@ -18,13 +19,20 @@
 					后台管理系统登录
 					<img src="${pageContext.servletContext.contextPath }/img/logo_left.png" alt="Logo" align="right">
 				</h2>
-				<div class="user">帐 号：<input type="text" name="user" class="text" /></div>
-				<div class="pass">密 码：<input type="password" name="pass" class="text" /></div>
+				<div class="user">帐 号：<input type="text" name="username" class="text" /></div>
+				<div class="pass">密 码：<input type="password" name="password" class="text" /></div>
 				<div class="button">
-					<input type="button" onclick="checkUserForm();" class="submit" />
+					<input type="button" onclick="checkUserForm();" class="submit"/>
 				</div>
 				<div class="other">忘记密码？</div>
 			</div>
 		</form>
+	</div>
+	
+	<script type="text/javascript">
+		function checkUserForm() {
+			document.loginform.submit();
+		}
+	</script>
 </body>
 </html>
