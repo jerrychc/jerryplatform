@@ -183,7 +183,7 @@ create table userlogin
 (
    id                   int not null auto_increment,
    userId               int not null,
-   accountName          VARCHAR(50) not null,
+   userName          VARCHAR(50) not null,
    loginTime            timestamp not null,
    loginIP              VARCHAR(40),
    primary key (id)
