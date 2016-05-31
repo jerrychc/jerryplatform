@@ -11,9 +11,8 @@ import java.lang.annotation.Target;
  * 需要给两个值<br>
  * tableName = "表名"<br>
  * id = "表的主键"(如果是多个主建,默认为第一个)<br>
- * @author lanyuan 2015-09-02
- * @Email: mmm333zzz520@163.com
- * @version 3.1v
+ * @author jerrychc 2016-5-31
+ * @version 1.0v
  *
  */
 @Target({ ElementType.TYPE })

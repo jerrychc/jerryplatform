@@ -339,7 +339,7 @@ public class Common {
 	/**
 	 * 获取登录账号的ID
 	 * 
-	 * @author lanyuan Email：mmm333zzz520@163.com date：2014-11-27
+	 * @author jerrychc  date：2016-5-31
 	 * @param request
 	 * @return
 	 */
@@ -354,7 +354,7 @@ public class Common {
 	/**
 	 * 获取登录账号的的对象
 	 * 
-	 * @author lanyuan Email：mmm333zzz520@163.com date：2014-2-27
+	 * @author jerrychc  date：2016-5-31
 	 * @param request
 	 * @return Object 返回是Object..需要转型为(Account)Object
 	 */
@@ -446,8 +446,7 @@ public class Common {
 	 * @descript
 	 * @param para
 	 * @return
-	 * @author lanyuan
-	 * @date 2015年3月29日
+	 * @author jerrychc  date：2016-5-31
 	 * @version 1.0
 	 */
 	public static String trimComma(String para) {
@@ -468,8 +467,7 @@ public class Common {
 	 * @descript
 	 * @param t
 	 * @param params
-	 * @author lanyuan
-	 * @date 2015年3月29日
+	 * @author jerrychc  date：2016-5-31
 	 * @version 1.0
 	 */
 	public static <T extends Object> T flushObject(T t, Map<String, Object> params) {

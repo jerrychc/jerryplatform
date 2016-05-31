@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.servletContext.contextPath }/css/login.css"/>
 <title>登录</title>
 </head>
-<body>
+<body onload="javascript:to_top()">
 	<div id="loginbox" style="padding-top: 10%;">
 		<form id="loginform" name="loginform" class="form-vertical"
 			action="${pageContext.servletContext.contextPath }/login.shtml"
@@ -30,8 +30,16 @@
 	</div>
 	
 	<script type="text/javascript">
+		if ("${error}" != "") {
+			alert("${error}");
+		};
 		function checkUserForm() {
 			document.loginform.submit();
+		}
+		function to_top(){
+			if(window != top){
+		        top.location.href=location.href;
+		    }
 		}
 	</script>
 </body>

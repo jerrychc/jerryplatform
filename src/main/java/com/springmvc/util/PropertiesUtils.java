@@ -14,10 +14,8 @@ import org.apache.ibatis.io.Resources;
  *　InputStream in = PropertiesUtils.class.getResourceAsStream("/config.properties");
  *　解决办法：
  *　String savePath = PropertiesUtils.class.getResource("/config.properties").getPath();
- * @author lanyuan
- * 2014-11-19
- * @Email: mmm333zzz520@163.com
- * @version 3.0v
+ * @author jerrychc  date：2016-5-31
+ * @version 1.0v
  */
 public class PropertiesUtils {
 	/**
