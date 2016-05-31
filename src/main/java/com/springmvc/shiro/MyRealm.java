@@ -15,7 +15,9 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.crypto.RandomNumberGenerator;
 import org.apache.shiro.crypto.SecureRandomNumberGenerator;
+import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.realm.AuthorizingRealm;
+import org.apache.shiro.realm.CachingRealm;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
@@ -24,6 +26,7 @@ import com.springmvc.entity.ResFormMap;
 import com.springmvc.entity.UserFormMap;
 import com.springmvc.mapper.ResourcesMapper;
 import com.springmvc.mapper.UserMapper;
+import com.springmvc.util.PasswordHelper;
 
 
 /**
@@ -147,5 +150,33 @@ public class MyRealm extends AuthorizingRealm{
 	public void clearAllCache() {
 		clearAllCachedAuthenticationInfo();
 		clearAllCachedAuthorizationInfo();
+	}
+	
+	
+	
+	private RandomNumberGenerator randomNumberGenerator = new SecureRandomNumberGenerator();
+	private String algorithmName = "md5";
+	private int hashIterations = 2;
+
+	public void encryptPassword(UserFormMap userFormMap) {
+		String salt=randomNumberGenerator.nextBytes().toHex();
+		userFormMap.put("credentialsSalt", salt);
+		String newPassword = new SimpleHash(algorithmName, userFormMap.get("password"), ByteSource.Util.bytes(userFormMap.get("userName")+salt), hashIterations).toHex();
+		userFormMap.put("password", newPassword); 
+	}
+	public static void main(String[] args) {
+		PasswordHelper passwordHelper = new PasswordHelper();
+		UserFormMap userFormMap = new UserFormMap();
+		userFormMap.put("password","123456");
+		userFormMap.put("userName","admin");
+		passwordHelper.encryptPassword(userFormMap);
+		System.out.println(userFormMap);
+		CachingRealm cr = new MyRealm();
+		SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo("admin", // 用户名
+				"8e00ad984aecea4d16582f5fb0d9c544", // 密码
+				ByteSource.Util.bytes("admin" + "" + "ac0730e977cc2b1e15f3ee3ddb9af3f8"),// salt=username+salt
+				cr.getName() // realm name
+		);
+		System.out.println("----"+authenticationInfo.getPrincipals().toString());
 	}
 }
