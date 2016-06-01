@@ -72,7 +72,6 @@ public class BackgroundController {
 			}
 			UserLoginFormMap userLogin = new UserLoginFormMap();
 			Session session = SecurityUtils.getSubject().getSession();
-			System.out.println("------usersessionid----"+session.getAttribute("userSessionId"));
 			userLogin.put("userId", session.getAttribute("userSessionId"));
 			userLogin.put("userName", username);
 			userLogin.put("loginIP", session.getHost());
@@ -83,6 +82,13 @@ public class BackgroundController {
 			request.setAttribute("error", "登录异常，请联系管理员！");
 			return "login";
 		}
-		return "login";
+		return "redirect:helloWorld.shtml";
+	}
+	
+	@RequestMapping(value = "logout", method = RequestMethod.GET)
+	public String logout() {
+		// 使用权限管理工具进行用户的退出，注销登录
+		SecurityUtils.getSubject().logout(); // session // 会销毁，在SessionListener监听session销毁，清理权限缓存
+		return "redirect:login.shtml";
 	}
 }

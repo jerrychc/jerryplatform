@@ -145,7 +145,7 @@ create table user
    userPhone            VARCHAR(20) default '0',
    userMail             VARCHAR(45) default 'Sysdate',
    userQQ               VARCHAR(15),
-   regTime              timestamp default NULL,
+   regTime              timestamp default current_timestamp,
    lastLogintime        timestamp not null default '0000-00-00 00:00:00',
    level                int,
    status               VARCHAR(20),
@@ -184,7 +184,7 @@ create table userlogin
    id                   int not null auto_increment,
    userId               int not null,
    userName          VARCHAR(50) not null,
-   loginTime            timestamp not null,
+   loginTime            timestamp not null default current_timestamp,
    loginIP              VARCHAR(40),
    primary key (id)
 );
@@ -194,11 +194,7 @@ alter table userlogin comment 'µÇÂ¼';
 /*==============================================================*/
 /* Index: UK_RRIGHT_PROID                                       */
 /*==============================================================*/
-create unique index UK_RRIGHT_PROID on userlogin
-(
-   accountName,
-   userId
-);
+
 
 /*==============================================================*/
 /* Index: INX_RRIGHT_STA                                        */
