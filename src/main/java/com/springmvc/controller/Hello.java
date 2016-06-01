@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class Hello {  
     @RequestMapping(value="/helloWorld")  
     public String HelloWorld(Model model){  
-        model.addAttribute("message","Hello !!!");
+        model.addAttribute("message","Hello World!!!");
         return "HelloWorld";  
     }  
       
